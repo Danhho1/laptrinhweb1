@@ -66,8 +66,8 @@ class CrudUserController extends Controller
         $check = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            //
-            //
+            'like' => $data['like'],
+            'github' => $data['github'],
             'password' => Hash::make($data['password'])
         ]);
 
@@ -124,8 +124,8 @@ class CrudUserController extends Controller
         $user->name = $input['name'];
         $user->email = $input['email'];
 
-        //
-        //
+        $user->like = $input['like'];
+        $user->github = $input['github'];
 
         // Kiểm tra nếu password có nhập thì mới update, nếu không thì giữ nguyên mật khẩu cũ
         if (!empty($input['password'])) {

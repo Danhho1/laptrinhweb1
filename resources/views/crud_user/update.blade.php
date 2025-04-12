@@ -42,8 +42,29 @@
                     @endif
                 </div>
 
-                        <!--Phone -->
-                        <!--Address -->
+                <div class="input-group">
+                    <label for="like">like</label>
+                    <input type="text" placeholder="like"
+                        id="like" class="form-control"
+                        value="{{ $user->like }}"
+                        name="like" required autofocus>
+                    @if ($errors->has('like'))
+                    <span class="text-danger">{{ $errors->first('like')
+                            }}</span>
+                    @endif
+                </div>
+                <div class="input-group">
+                    <label for="github">github</label>
+                    <input type="text" placeholder="github"
+                        id="github" class="form-control"
+                        value="{{ $user->github }}"
+                        name="github" required autofocus>
+                    @if ($errors->has('github'))
+                    <span class="text-danger">{{ $errors->first('github')
+                            }}</span>
+                    @endif
+                </div>
+               
 
                 <div class="input-group">
                     <label for="password">Password</label>

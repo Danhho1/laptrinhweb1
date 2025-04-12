@@ -27,11 +27,25 @@
                     @endif
                 </div>
 
-                <!-- Phone ... -->
-               
+                <div class="input-group">
+                    <label for="like">like</label>
+                    <input type="text" placeholder="like" id="like" class="form-control"
+                        name="like" required autofocus>
+                    @if ($errors->has('like'))
+                    <span class="text-danger">{{ $errors->first('like') }}</span>
+                    @endif
+                </div>
+                
+                <div class="input-group">
+                    <label for="github">github</label>
+                    <input type="text" placeholder="github" id="github" class="form-control"
+                        name="github" required autofocus>
+                    @if ($errors->has('github'))
+                    <span class="text-danger">{{ $errors->first('github') }}</span>
+                    @endif
+                </div>
+                
 
-                <!-- Address ...-->
-               
 
                 <div class="input-group">
                     <label for="email">Email</label>

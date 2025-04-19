@@ -1,29 +1,16 @@
-<!DOCTYPE html>
-<html lang="vi">
+@extends('dashboard')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách người dùng</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-
-<body>
+@section('content')
+<main class="login-form">
     <div class="container">
-        <div class="nav">
-            <a href="{{ route('login') }}">Home</a> |
-            <a href="{{ route('login') }}">Log out</a>
-        </div>
-        <div class="list-box">
-            <h2>List user</h2>
+        <div class="row justify-content-center">
             <table>
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Username</th>
+                        <th>Name</th>
                         <th>Email</th>
-                        <th>Phone</th>
-                        <th>Address</th>
+                        <th>Roles</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -33,8 +20,13 @@
                         <th>{{ $user->id }}</th>
                         <th>{{ $user->name }}</th>
                         <th>{{ $user->email }}</th>
-                        <th>{{ $user->phone }}</th>
-                        <th>{{ $user->address }}</th>
+                        <th>
+                            @foreach($user->roles as $role)
+                            <a href="{{ route('user.role', ['id' => $role->id]) }}">
+                                {{ $role->name . '-' }}
+                            </a>
+                            @endforeach
+                        </th>
                         <th>
                             <a href="{{ route('user.readUser', ['id' => $user->id]) }}">View</a> |
                             <a href="{{ route('user.updateUser', ['id' => $user->id]) }}">Edit</a> |
@@ -44,8 +36,8 @@
                     @endforeach
                 </tbody>
             </table>
+            {!! $users->withQueryString()->links('pagination::bootstrap-5') !!}
         </div>
     </div>
-</body>
-
-</html>
+</main>
+@endsection

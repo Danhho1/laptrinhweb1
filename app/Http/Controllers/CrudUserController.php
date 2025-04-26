@@ -152,6 +152,18 @@ class CrudUserController extends Controller
         return redirect("login")->withSuccess('You are not allowed to access');
     }
 
+    public function listProduct()
+    {
+
+        if (Auth::check()) {
+            return view('crud_user.list', [
+                'users' => User::with('products')->paginate(10)
+            ]);
+        }
+
+        return redirect("login")->withSuccess('You are not allowed to access');
+    }
+
     /**
      * Sign out
      */

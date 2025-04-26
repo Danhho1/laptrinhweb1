@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CrudUserController;
 
 use App\Http\Controllers\RoleController;
-
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +37,8 @@ Route::get('signout', [CrudUserController::class, 'signOut'])->name('signout');
 
 //Roles
 Route::get('role', [RoleController::class, 'role'])->name('user.role');
+//products
+Route::get('product', [ProductController::class, 'product'])->name('user.product');
 
 Route::get('/', function () {
     return view('welcome');

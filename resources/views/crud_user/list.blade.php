@@ -10,6 +10,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Orders</th>
                         <th>Roles</th>
                         <th>Action</th>
                     </tr>
@@ -20,6 +21,11 @@
                         <th>{{ $user->id }}</th>
                         <th>{{ $user->name }}</th>
                         <th>{{ $user->email }}</th>
+                        <th> @foreach($user->products as $product)
+                            <a href="{{ route('user.product', ['id' => $product->id]) }}">
+                                {{ $product->name . '-' }}
+                            </a>
+                            @endforeach</th>
                         <th>
                             @foreach($user->roles as $role)
                             <a href="{{ route('user.role', ['id' => $role->id]) }}">

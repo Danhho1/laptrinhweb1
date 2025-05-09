@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Orders extends Authenticatable
+class Order extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -25,8 +26,13 @@ class Orders extends Authenticatable
 
 
    
-    public function roles(): BelongsToMany
+     public function user(): BelongsTo
     {
-        return $this->belongsToMany(Role::class, 'products');
+        return $this->belongsTo(User::class);
+    }
+
+    public function orderDetails(): HasMany
+    {
+        return $this->hasMany(OrderDetail::class);
     }
 }
